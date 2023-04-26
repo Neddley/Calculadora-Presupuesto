@@ -14,7 +14,6 @@ body {
   height: 100%;
 }
 
-
 nav {
   display: flex;
   padding: 10px;
@@ -99,11 +98,11 @@ label {
   overflow: hidden;
 }
 
-button:hover {
+.btn:hover {
   color: black;
 }
 
-button:after {
+.btn:after {
   content: "";
   background: white;
   position: absolute;
@@ -116,7 +115,7 @@ button:after {
   transition: all 0.5s;
 }
 
-button:hover:after {
+.btn:hover:after {
   transform: skewX(-45deg) scale(1, 1);
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
@@ -135,8 +134,58 @@ button:hover:after {
 }
 
 #segunda-mitad {
-  border: 2px solid black;
   width: 45%;
-  margin-left: 10px;
-  height: 400px;
+  margin-left: 20px;
+  min-height: 100px;
+}
+
+#math-container{
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  width: 100%;
+  height: 100px;
+}
+
+#math-container > div{
+	width: 20%;
+	height: 40px;
+	display: flex;
+	justify-content: center;
+}
+
+h2{
+	font-size: 14px;
+}
+
+.montos{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.montos > div{
+  display: flex   ;
+  justify-content: center;
+}
+
+#tabla-container{
+  width: 100%;
+  height: 300px;
+}
+
+table{
+  width:100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+th{
+  text-align: left;
+  border-bottom: 1px solid black;
+  padding: 3px 0;
+}
+
+td{
+  padding: 3px 0;  
 }

@@ -34,29 +34,77 @@
         </div>
         <div id="gastos-container">
           <div class="inputGroup">
-            <label for="name">Ingresa El Nombre Del Gastos</label>
-            <input type="text" required="" autocomplete="off" />
-            <label for="name">Ingresa La Cantidad Del Gastos</label>
-            <input type="text" required="" autocomplete="off" />
-            <label for="name">Cantidad</label>
-            <input type="text" required="" autocomplete="off" />
+            <label for="input-gasto">Ingresa El Nombre Del Gasto</label>
+            <input
+              type="text"
+              id="input-gasto"
+              required=""
+              autocomplete="off"
+            />
+            <label for="input-monto">Ingresa El Monto Del Gasto</label>
+            <input
+              type="text"
+              id="input-monto"
+              required=""
+              autocomplete="off"
+            />
+            <label for="input-cantidad">Cantidad</label>
+            <input
+              type="text"
+              id="input-cantidad"
+              required=""
+              autocomplete="off"
+            />
             <div>
               <button class="btn">AÑADIR</button>
             </div>
           </div>
         </div>
       </div>
-	  
+
       <div id="segunda-mitad">
-        <div
-          id="math-container"
-          style="border: 1px solid black; width: 100%; height: 200px"
-        >
-          <div id="presupuesto"></div>
-          <div id="gastos"></div>
-          <div id="saldos"></div>
+        <div id="math-container">
+          <div class="montos">
+            <div><h2>Presupuesto</h2></div>
+            <div>
+              <p>$<span>0</span></p>
+            </div>
+          </div>
+          <div class="montos">
+            <div><h2>Gastos</h2></div>
+            <div>
+              <p>$<span>0</span></p>
+            </div>
+          </div>
+          <div class="montos">
+            <div><h2>Saldos</h2></div>
+            <div>
+              <p>$<span>0</span></p>
+            </div>
+          </div>
         </div>
-        <div id="tabla-container"></div>
+        <div id="tabla-container">
+          <table>
+            <tr>
+              <th>Gastos</th>
+              <th>Valor</th>
+              <th>Cantidad</th>
+              <th>Borrar</th>
+            </tr>
+            <tr>
+              <td>Soda</td>
+              <td>1000</td>
+              <td>1</td>
+              <td><button>borrar</button></td>
+            </tr>
+            <tr>
+              <td>Toyota Ryzen</td>
+              <td>14000000</td>
+              <td>1</td>
+              <td><button>borrar</button></td>
+            </tr>
+          </table>
+        </div>
       </div>
     </main>
     <script type="text/javascript" src="assets/js/script.js"></script>
