@@ -10,7 +10,8 @@
       href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap"
       rel="stylesheet"
     />
-    <title></title>
+    <link rel="icon" type="image/x-icon" href="/assets/img/calculator.png" />
+    <title>Calculadora de Presupuesto</title>
   </head>
   <body>
     <nav id="nav-container">
@@ -19,6 +20,9 @@
       </div>
     </nav>
     <main>
+
+      <!-- INPUT PRESUPUESTO -->
+
       <div id="primera-mitad">
         <div id="presupuesto-container">
           <div class="inputGroup">
@@ -26,12 +30,16 @@
             <input
               type="text"
               id="input-presupuesto"
+              name="inputPresupuesto"
               required=""
               autocomplete="off"
             />
-            <button class="btn">AÑADIR</button>
+            <button class="btn" onclick="addPres(event)">AÑADIR</button>
           </div>
         </div>
+
+        <!-- INPUTS GASTOS -->
+        
         <div id="gastos-container">
           <div class="inputGroup">
             <label for="input-gasto">Ingresa El Nombre Del Gasto</label>
@@ -56,33 +64,38 @@
               autocomplete="off"
             />
             <div>
-              <button class="btn">AÑADIR</button>
+              <button class="btn" onclick="addGastos(event)">AÑADIR</button>
             </div>
           </div>
         </div>
       </div>
+
+      <!-- CALCULOS -->
 
       <div id="segunda-mitad">
         <div id="math-container">
           <div class="montos">
             <div><h2>Presupuesto</h2></div>
             <div>
-              <p>$<span>0</span></p>
+              <p>$<span id="span-presupuesto">0</span></p>
             </div>
           </div>
           <div class="montos">
             <div><h2>Gastos</h2></div>
             <div>
-              <p>$<span>0</span></p>
+              <p>$<span id="span-gastos">0</span></p>
             </div>
           </div>
           <div class="montos">
             <div><h2>Saldos</h2></div>
             <div>
-              <p>$<span>0</span></p>
+              <p>$<span id="span-saldo">0</span></p>
             </div>
           </div>
         </div>
+
+        <!-- TABLA GASTOS -->
+
         <div id="tabla-container">
           <table>
             <tr>
@@ -95,18 +108,27 @@
               <td>Soda</td>
               <td>1000</td>
               <td>1</td>
-              <td><i><img src="assets/img/borrar.png" alt="borrar"></i></td>
+              <td>
+                <i><img src="assets/img/borrar.png" alt="borrar" /></i>
+              </td>
             </tr>
             <tr>
               <td>Toyota Ryzen</td>
               <td>14000000</td>
               <td>1</td>
-              <td><i><img src="assets/img/borrar.png" alt="borrar"></i></td>
+              <td>
+                <i><img src="assets/img/borrar.png" alt="borrar" /></i>
+              </td>
             </tr>
           </table>
         </div>
       </div>
     </main>
+    <script
+      src="https://code.jquery.com/jquery-3.6.4.min.js"
+      integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8="
+      crossorigin="anonymous"
+    ></script>
     <script type="text/javascript" src="assets/js/script.js"></script>
   </body>
 </html>
