@@ -28,11 +28,10 @@
           <div class="inputGroup">
             <label for="input-presupuesto">Ingresa Tu Presupuesto</label>
             <input
-              type="text"
+              type="number"
               id="input-presupuesto"
               name="inputPresupuesto"
-              required=""
-              autocomplete="off"
+              autocomplete="off" onkeypress="keyPress(this)"
             />
             <button class="btn" onclick="addPres(event)">AÑADIR</button>
           </div>
@@ -51,14 +50,14 @@
             />
             <label for="input-monto">Ingresa El Monto Del Gasto</label>
             <input
-              type="text"
+              type="number"
               id="input-monto"
               required=""
               autocomplete="off"
             />
             <label for="input-cantidad">Cantidad</label>
             <input
-              type="text"
+              type="number"
               id="input-cantidad"
               required=""
               autocomplete="off"

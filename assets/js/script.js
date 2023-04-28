@@ -16,14 +16,26 @@ $(function () {
   });
 });
 
+function keyPress(ele) {
+  if (event.key === "Enter") {
+    addPres();
+  }
+}
+
 const addPres = (event) => {
   presupuesto = document.getElementById("input-presupuesto").value;
 
-  document.getElementById("input-presupuesto").value = "";
+  if (presupuesto == "" || isNaN(presupuesto) || presupuesto <= 0) {
+    alert(
+      "El presupuesto no puede quedar en blanco y debe de ser un numero mayor a 0"
+    );
+  } else {
+    document.getElementById("input-presupuesto").value = "";
 
-  spanPresupuesto.innerHTML = presupuesto;
+    spanPresupuesto.innerHTML = presupuesto;
 
-  calculo();
+    calculo();
+  }
 };
 
 const addGastos = (event) => {
@@ -45,17 +57,27 @@ const addGastos = (event) => {
   };
 
   arrayGastos.push(objGastos);
-
+  console.log(arrayGastos)
   calculo();
+  rescate();
 };
 
-function calculo(){
+function calculo() {
   if (presupuesto > 0 && gastos > 0) {
     console.log("aqui estoy");
     saldo = presupuesto - gastos;
     spanSaldo.innerHTML = saldo;
   }
-};
+}
+
+function rescate(){
+  arrayGastos.forEach(element => {
+    let tGasto = element.gasto
+    let tValor = element.valor
+    let tCantidad = element.cantidad
+    console.log(tGasto + tValor + tCantidad)
+  });
+}
 
 /* function tablaGen(){
     let hilera = document.createElement("tr");
