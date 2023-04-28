@@ -1,34 +1,66 @@
 const spanPresupuesto = document.getElementById("span-presupuesto");
 const spanGastos = document.getElementById("span-gastos");
-const spanSaldo = document.getElementById("span-saldo")
-let gastos = 0
+const spanSaldo = document.getElementById("span-saldo");
+let presupuesto = 0;
+let gastos = 0;
+let saldo = 0;
+let arrayGastos = [];
 
-console.log("funca")
-
-$(function() {
-
-    var $body = $(document);
-    $body.bind('scroll', function() {
-        // "Desactivar" el scroll horizontal
-        if ($body.scrollLeft() !== 0) {
-            $body.scrollLeft(0);
-        }
-    });
-
-}); 
+$(function () {
+  var $body = $(document);
+  $body.bind("scroll", function () {
+    // "Desactivar" el scroll horizontal
+    if ($body.scrollLeft() !== 0) {
+      $body.scrollLeft(0);
+    }
+  });
+});
 
 const addPres = (event) => {
-    const presupuesto = document.getElementById("input-presupuesto").value;
-    spanPresupuesto.innerHTML = presupuesto;
-}
+  presupuesto = document.getElementById("input-presupuesto").value;
 
-const addGastos = (event) =>{
-    const nombreGasto = document.getElementById("input-gasto").value;
-    const precioGasto = document.getElementById("input-monto").value;
-    const cantidadGasto = document.getElementById("input-cantidad").value;
+  document.getElementById("input-presupuesto").value = "";
 
-    
-    gastos += + precioGasto
+  spanPresupuesto.innerHTML = presupuesto;
 
-    spanGastos.innerHTML = gastos
-}
+  calculo();
+};
+
+const addGastos = (event) => {
+  const nombreGasto = document.getElementById("input-gasto").value;
+  const precioGasto = document.getElementById("input-monto").value;
+  const cantidadGasto = document.getElementById("input-cantidad").value;
+
+  document.getElementById("input-gasto").value = "";
+  document.getElementById("input-monto").value = "";
+  document.getElementById("input-cantidad").value = "";
+
+  gastos += +precioGasto;
+  spanGastos.innerHTML = gastos;
+
+  let objGastos = {
+    gasto: nombreGasto,
+    valor: precioGasto,
+    cantidad: cantidadGasto,
+  };
+
+  arrayGastos.push(objGastos);
+
+  calculo();
+};
+
+function calculo(){
+  if (presupuesto > 0 && gastos > 0) {
+    console.log("aqui estoy");
+    saldo = presupuesto - gastos;
+    spanSaldo.innerHTML = saldo;
+  }
+};
+
+/* function tablaGen(){
+    let hilera = document.createElement("tr");
+    for (let i=0; i=arrayGastos.length;i++){
+        let celda = document.createElement("td");
+        let textoCelda = document.createTextNode("texto");
+    }
+} */
