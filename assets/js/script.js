@@ -48,7 +48,7 @@ const addGastos = (event) => {
   document.getElementById("input-monto").value = "";
   document.getElementById("input-cantidad").value = "";
 
-  gastos += +precioGasto;
+  gastos += +precioGasto*cantidadGasto;
   spanGastos.innerHTML = gastos;
 
   let objGastos = {
