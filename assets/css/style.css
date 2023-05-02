@@ -191,7 +191,7 @@ table{
   table-layout: fixed;
 }
 
-th{
+thead>tr>th{
   text-align: left;
   border-bottom: 1px solid black;
   padding: 3px 0;

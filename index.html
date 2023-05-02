@@ -20,7 +20,6 @@
       </div>
     </nav>
     <main>
-
       <!-- INPUT PRESUPUESTO -->
 
       <div id="primera-mitad">
@@ -31,14 +30,15 @@
               type="number"
               id="input-presupuesto"
               name="inputPresupuesto"
-              autocomplete="off" onkeypress="keyPress(this)"
+              autocomplete="off"
+              onkeypress="keyPress(this)"
             />
             <button class="btn" onclick="addPres(event)">AÑADIR</button>
           </div>
         </div>
 
         <!-- INPUTS GASTOS -->
-        
+
         <div id="gastos-container">
           <div class="inputGroup">
             <label for="input-gasto">Ingresa El Nombre Del Gasto</label>
@@ -97,28 +97,16 @@
 
         <div id="tabla-container">
           <table>
-            <tr>
-              <th>Gastos</th>
-              <th>Valor</th>
-              <th>Cantidad</th>
-              <th>Borrar</th>
-            </tr>
-            <tr>
-              <td>Soda</td>
-              <td>1000</td>
-              <td>1</td>
-              <td>
-                <i><img src="assets/img/borrar.png" alt="borrar" /></i>
-              </td>
-            </tr>
-            <tr>
-              <td>Toyota Ryzen</td>
-              <td>14000000</td>
-              <td>1</td>
-              <td>
-                <i><img src="assets/img/borrar.png" alt="borrar" /></i>
-              </td>
-            </tr>
+            <thead>
+              <tr>
+                <th scope="col">Gastos</th>
+                <th scope="col">Valor</th>
+                <th scope="col">Cantidad</th>
+                <th scope="col">Borrar</th>
+              </tr>
+            </thead>
+            <tbody id="contenido">
+            </tbody>
           </table>
         </div>
       </div>

@@ -5,6 +5,7 @@ let presupuesto = 0;
 let gastos = 0;
 let saldo = 0;
 let arrayGastos = [];
+let contenido = document.querySelector("#contenido");
 
 $(function () {
   var $body = $(document);
@@ -57,32 +58,42 @@ const addGastos = (event) => {
   };
 
   arrayGastos.push(objGastos);
-  console.log(arrayGastos)
   calculo();
-  rescate();
+  rescate()
 };
 
 function calculo() {
   if (presupuesto > 0 && gastos > 0) {
-    console.log("aqui estoy");
     saldo = presupuesto - gastos;
     spanSaldo.innerHTML = saldo;
   }
 }
 
-function rescate(){
-  arrayGastos.forEach(element => {
-    let tGasto = element.gasto
-    let tValor = element.valor
-    let tCantidad = element.cantidad
-    console.log(tGasto + tValor + tCantidad)
-  });
-}
+ function rescate() {
 
-/* function tablaGen(){
-    let hilera = document.createElement("tr");
-    for (let i=0; i=arrayGastos.length;i++){
-        let celda = document.createElement("td");
-        let textoCelda = document.createTextNode("texto");
-    }
-} */
+  console.log(arrayGastos)
+  contenido.innerHTML = ''
+
+  arrayGastos.forEach((element) => {
+    let tGasto = element.gasto;
+    let tValor = element.valor;
+    let tCantidad = element.cantidad;
+
+    contenido.innerHTML += `
+    <tr>
+      <td scope="row">${tGasto}</td>
+      <td>${tValor}</td>
+      <td>${tCantidad}</td>
+      <td>
+        <i style="cursor:pointer;" onclick="borrar(event)"><img src="assets/img/borrar.png" alt="borrar"/></i>
+      </td>
+    </tr>
+    `;
+  });
+} 
+
+function borrar(event){
+
+  event.target.parentNode.parentNode.parentNode.remove();
+
+}
