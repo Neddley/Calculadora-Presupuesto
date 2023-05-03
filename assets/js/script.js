@@ -26,10 +26,14 @@ function keyPress(ele) {
 const addPres = (event) => {
   presupuesto = document.getElementById("input-presupuesto").value;
 
-  if (presupuesto == "" || isNaN(presupuesto) || presupuesto <= 0) {
-    alert(
-      "El presupuesto no puede quedar en blanco y debe de ser un numero mayor a 0"
+  if (presupuesto == "") {
+    /* isNaN(presupuesto) || presupuesto <= 0) */ alert(
+      "El presupuesto no puede quedar en blanco"
     );
+  } else if (isNaN(presupuesto)) {
+    alert("El presupuesto debe de ser un numero");
+  } else if (presupuesto <= 0) {
+    alert("El presupuesto debe ser mayor a 0");
   } else {
     document.getElementById("input-presupuesto").value = "";
 
@@ -39,27 +43,41 @@ const addPres = (event) => {
   }
 };
 
+function keyPress1(ele) {
+  if (event.key === "Enter") {
+    addGastos();
+  }
+}
+
 const addGastos = (event) => {
   const nombreGasto = document.getElementById("input-gasto").value;
   const precioGasto = document.getElementById("input-monto").value;
   const cantidadGasto = document.getElementById("input-cantidad").value;
 
-  document.getElementById("input-gasto").value = "";
-  document.getElementById("input-monto").value = "";
-  document.getElementById("input-cantidad").value = "";
+  if (nombreGasto == "" || precioGasto == "" || cantidadGasto == "") {
+    alert("No puedes dejar casillas sin rellenar");
+  } else if (isNaN(precioGasto) || precioGasto <= 0) {
+    alert("El monto del gasto debe ser un numero mayor a 0");
+  } else if (isNaN(cantidadGasto) || cantidadGasto <= 0) {
+    alert("La cantidad debe ser un numero mayor a 0")
+  } else {
+    document.getElementById("input-gasto").value = "";
+    document.getElementById("input-monto").value = "";
+    document.getElementById("input-cantidad").value = "";
 
-  gastos += +precioGasto*cantidadGasto;
-  spanGastos.innerHTML = gastos;
+    gastos += +precioGasto * cantidadGasto;
+    spanGastos.innerHTML = gastos;
 
-  let objGastos = {
-    gasto: nombreGasto,
-    valor: precioGasto,
-    cantidad: cantidadGasto,
-  };
+    let objGastos = {
+      gasto: nombreGasto,
+      valor: precioGasto,
+      cantidad: cantidadGasto,
+    };
 
-  arrayGastos.push(objGastos);
-  calculo();
-  rescate()
+    arrayGastos.push(objGastos);
+    calculo();
+    rescate();
+  }
 };
 
 function calculo() {
@@ -69,12 +87,10 @@ function calculo() {
   }
 }
 
- function rescate() {
+function rescate() {
+  contenido.innerHTML = "";
 
-  console.log(arrayGastos)
-  contenido.innerHTML = ''
-
-  arrayGastos.forEach((element) => {
+  arrayGastos.forEach((element, index) => {
     let tGasto = element.gasto;
     let tValor = element.valor;
     let tCantidad = element.cantidad;
@@ -85,15 +101,23 @@ function calculo() {
       <td>${tValor}</td>
       <td>${tCantidad}</td>
       <td>
-        <i style="cursor:pointer;" onclick="borrar(event)"><img src="assets/img/borrar.png" alt="borrar"/></i>
+        <i style="cursor:pointer;" onclick="borrar(${index},${tValor},${tCantidad})"><img src="assets/img/borrar.png" alt="borrar"/></i>
       </td>
     </tr>
     `;
   });
-} 
+}
 
-function borrar(event){
+function borrar(index,valor,cantidad) {
 
+  saldo = saldo + valor*cantidad;
+  spanSaldo.innerHTML = saldo;
+
+  gastos = gastos - valor*cantidad;
+  spanGastos.innerHTML = gastos;
+
+  arrayGastos.splice(index,1);
   event.target.parentNode.parentNode.parentNode.remove();
 
+  rescate();
 }
